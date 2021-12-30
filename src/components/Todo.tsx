@@ -31,7 +31,7 @@ function Todo({ task, index, dispatch }: TodoProps) {
   return (
     <article className='shadow-md bg-gray-400 text-zinc-900 rounded-md p-5 mb-4 flex flex-row flex-wrap justify-between items-center' onDoubleClick={handleDoubleClick}>
       <h2 className={`${editOn ? 'hidden' : 'block'} font-semibold`}>{task}</h2>
-      <input autoFocus ref={inputRef} type="text" defaultValue={task} className={`${editOn ? 'block' : 'hidden'} p-2 text-zinc-800 rounded-xl`} onKeyDown={handleInputSubmit} onBlur={() => setEditOn(false)} />
+      <input autoFocus ref={inputRef} type="text" defaultValue={task} className={`${editOn ? 'block' : 'hidden'} p-2 text-zinc-800 rounded-xl w-11/12`} onKeyDown={handleInputSubmit} onBlur={() => setEditOn(false)} />
       <div>
         <button className='lg:hidden' onClick={handleDoubleClick}><Edit /></button>
         <button onClick={handleDelete}><Delete /></button>
