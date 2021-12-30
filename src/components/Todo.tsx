@@ -17,6 +17,7 @@ function Todo({ task, index, dispatch }: TodoProps) {
   }
 
   const handleDoubleClick = () => {
+    if (editOn) { return }
     (inputRef.current as HTMLInputElement).focus()
     setEditOn(!editOn)
   }

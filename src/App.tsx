@@ -48,8 +48,8 @@ function App() {
   return (
     <div className="w-screen h-screen bg-white dark:bg-zinc-900 todo-app text-black dark:text-zinc-300 p-5 md:p-10">
       <div className='md:max-w-lg mx-auto'>
-        <h1 className='text-center font-bold text-lg'>Todo App</h1>
-        <input className='w-full mt-4 p-2 text-zinc-800 rounded-xl' type="text" name="todo-item" id="todo-item" placeholder='What should we do today?' onKeyDown={handleInputSubmit} />
+        <h1 className='text-center font-bold text-lg md:text-3xl'>Todo App</h1>
+        <input className='w-full mt-4 md:mt-10 p-2 text-zinc-800 rounded-xl' type="text" name="todo-item" id="todo-item" placeholder='What should we do today?' onKeyDown={handleInputSubmit} />
         <div className='mt-5 italic hidden lg:block'>Double click an item to edit.</div>
         <section className='mt-5 todo-container'>
           {
