@@ -1,5 +1,4 @@
-import React, { useReducer, useState } from 'react';
-import './App.css';
+import React, { useReducer } from 'react';
 import Todo from './components/Todo';
 
 function App() {
@@ -11,7 +10,10 @@ function App() {
   } | 
   {
     type: 'update',
-    payload: string
+    payload: {
+      index: number,
+      newValue: string
+    }
   } |
   {
     type: 'delete',
@@ -22,6 +24,11 @@ function App() {
     switch (action.type) {
       case "add":
         return { todos: [...state.todos, action.payload] }
+      case "update":
+        state.todos[action.payload.index] = action.payload.newValue
+        return { todos: [...state.todos] }
+      case "delete":
+        return { todos: [...state.todos.filter((_, index) => index !== action.payload)] }
       default:
         throw new Error();
     }
@@ -42,9 +49,10 @@ function App() {
     <div className="w-screen h-screen bg-white dark:bg-zinc-900 todo-app text-black dark:text-zinc-300 p-5">
       <h1 className='text-center font-bold text-lg'>Todo App</h1>
       <input className='w-full mt-4 p-2 text-zinc-800 rounded-xl' type="text" name="todo-item" id="todo-item" placeholder='What should we do today?' onKeyDown={handleInputSubmit} />
+      <div className='mt-5 italic hidden lg:block'>Double click an item to edit.</div>
       <section className='mt-5 todo-container'>
         {
-          state?.todos && state.todos.map((todo, index) => <Todo key={index} task={todo} />)
+          state?.todos && state.todos.map((todo, index) => <Todo key={index} index={index} task={todo} dispatch={dispatch} />)
         }
       </section>
     </div>
